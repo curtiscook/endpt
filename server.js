@@ -45,7 +45,9 @@ app.post('/', function(req, res){
     res.end('thanks');
 });
 
-port = 3000;
-app.listen(port);
-console.log('Listening at http://localhost:' + port)
+app.set('port', (process.env.PORT || 3000))
+app.use(express.static(__dirname));
+app.listen(app.get('port'), function() {
+  console.log('Listening at http://localhost:' + app.get('port'));
+});
 
