@@ -45,7 +45,7 @@ app.post('/', function(req, res){
     res.end('thanks');
 });
 
-port = 80;
+port = 3000;
 app.listen(port);
 console.log('Listening at http://localhost:' + port)
 
