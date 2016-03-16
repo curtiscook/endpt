@@ -17,7 +17,7 @@ app.use(express.bodyParser());
 app.get('/', function(req, res){
     console.log('GET /');
     var html = '<html><body><form method="post" action="' + express.static(__dirname) +
-    'Name:<input type="text" name="name" /><input type="submit" value="Submit" /></form></body>'
+    '">Name:<input type="text" name="name" /><input type="submit" value="Submit" /></form></body>'
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end(html);
 });
