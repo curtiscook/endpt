@@ -34,7 +34,9 @@ app.post('/', function(req, res){
     var reqHeaders = JSON.stringify({
       host: req.headers.host, 
       origin: req.headers.origin,
-      referer: req.headers.referer
+      referer: req.headers.referer,
+      hostname: req.hostname,
+      ip: req.ip
     }, null, '\t');
     console.log(reqHeaders);
     console.log(reqText);
