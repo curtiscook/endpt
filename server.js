@@ -1,6 +1,9 @@
 var express = require('express');
 var fs = require('fs');
 var app = express();
+var rateLimit = require('express-rate-limit');
+var limiter = rateLimit();
+app.use(limiter);
 //var sendgrid = require("sendgrid")(process.env.SEND_GRID);
 //var email = new sendgrid.Email();
 var Slack = require('slack-node');
