@@ -31,13 +31,19 @@ app.post('/', function(req, res){
     console.dir(req.body);
     res.writeHead(200, {'Content-Type': 'text/html'});
     var reqText = JSON.stringify(req.body, null, '\t');
+    var reqHeaders = JSON.stringify({
+      host: req.headers.host, 
+      origin: req.headers.origin,
+      referer: req.headers.referer
+    }, null, '\t');
+    console.log(reqHeaders);
     console.log(reqText);
  //   email.setText(reqText);
 
     slack.api('chat.postMessage', {
       username: '@bailey',
       channel: '#web-hook-testing',
-      text: ('```' + reqText + '```')
+      text: ('```' + reqHeaders + '\n' + reqText + '```')
     }, function(err, response) {
       console.log(response);
     });
