@@ -32,9 +32,7 @@ app.post('/', function(req, res){
     res.writeHead(200, {'Content-Type': 'text/html'});
     var reqText = JSON.stringify(req.body, null, '\t');
     var reqHeaders = JSON.stringify({
-      host: req.headers.host, 
-      origin: req.headers.origin,
-      referer: req.headers.referer,
+      headers: req.headers, 
       hostname: req.hostname,
       ip: req.ip
     }, null, '\t');
