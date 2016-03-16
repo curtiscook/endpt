@@ -34,7 +34,7 @@ app.post('/', function(req, res){
     slack.api('chat.postMessage', {
       username: '@bailey',
       channel: '#web-hook-testing',
-      text: reqText
+      text: ('```' + reqText + '```')
     }, function(err, response) {
       console.log(response);
     });
