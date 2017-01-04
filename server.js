@@ -6,10 +6,10 @@ var limiter = rateLimit();
 app.use(limiter);
 //var sendgrid = require("sendgrid")(process.env.SEND_GRID);
 //var email = new sendgrid.Email();
-var Slack = require('slack-node');
+//var Slack = require('slack-node');
 
 var apiToken = process.env.API_TOKEN;
-var slack = new Slack(apiToken);
+//var slack = new Slack(apiToken);
 
 //email.addTo("curtis@blendlabs.com");
 //email.setFrom("noreply@blendlabs.com");
@@ -40,13 +40,13 @@ app.post('/', function(req, res){
     console.log(reqText);
  //   email.setText(reqText);
 
-    slack.api('chat.postMessage', {
-      username: '@bailey',
-      channel: '#web-hook-testing',
-      text: ('```' + reqHeaders + '\n' + reqText + '```')
-    }, function(err, response) {
-      console.log(response);
-    });
+//    slack.api('chat.postMessage', {
+//      username: '@bailey',
+//      channel: '#web-hook-testing',
+//      text: ('```' + reqHeaders + '\n' + reqText + '```')
+//    }, function(err, response) {
+//      console.log(response);
+//    });
 
 
 //    sendgrid.send(email, function(err, json) {
