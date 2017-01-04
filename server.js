@@ -33,7 +33,7 @@ app.post('/', function(req, res){
     console.log(reqHeaders);
     console.log(reqText);
     var params = {
-      room: HCROOM,
+      room: HCRoom,
       from: "Webhook",
       message: (reqHeaders + '\n' + reqText)
     };
