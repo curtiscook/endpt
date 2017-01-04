@@ -6,7 +6,7 @@ var limiter = rateLimit();
 app.use(limiter);
 
 const HipChat = require('node-hipchat');
-const HC = new hipchat(process.env.HIPCHAT_TOKEN);
+const HC = new HipChat(process.env.HIPCHAT_TOKEN);
 const HCRoom = process.env.HIPCHAT_ROOM;
 
 app.use(express.bodyParser());
@@ -33,9 +33,9 @@ app.post('/', function(req, res){
     console.log(reqHeaders);
     console.log(reqText);
     var params = {
-      room: ,
+      room: HCROOM,
       from: "Webhook",
-      message: "(reqHeaders + '\n' + reqText)
+      message: (reqHeaders + '\n' + reqText)
     };
 
     HC.postMessage(params, function(data) {
