@@ -32,6 +32,11 @@ app.post('/', function(req, res){
     }, null, '\t');
     console.log(reqHeaders);
     console.log(reqText);
+	
+    HC.listRooms(function(data) {
+      console.log(data);
+    });    
+
     var params = {
       room: HCRoom,
       from: "Webhook",
