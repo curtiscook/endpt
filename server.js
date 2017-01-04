@@ -4,16 +4,10 @@ var app = express();
 var rateLimit = require('express-rate-limit');
 var limiter = rateLimit();
 app.use(limiter);
-//var sendgrid = require("sendgrid")(process.env.SEND_GRID);
-//var email = new sendgrid.Email();
-//var Slack = require('slack-node');
 
-var apiToken = process.env.API_TOKEN;
-//var slack = new Slack(apiToken);
-
-//email.addTo("curtis@blendlabs.com");
-//email.setFrom("noreply@blendlabs.com");
-//email.setSubject("Webhooks Test");
+const HipChat = require('node-hipchat');
+const HC = new hipchat(process.env.HIPCHAT_TOKEN);
+const HCRoom = process.env.HIPCHAT_ROOM;
 
 app.use(express.bodyParser());
 
@@ -38,21 +32,15 @@ app.post('/', function(req, res){
     }, null, '\t');
     console.log(reqHeaders);
     console.log(reqText);
- //   email.setText(reqText);
+    var params = {
+      room: ,
+      from: "Webhook",
+      message: "(reqHeaders + '\n' + reqText)
+    };
 
-//    slack.api('chat.postMessage', {
-//      username: '@bailey',
-//      channel: '#web-hook-testing',
-//      text: ('```' + reqHeaders + '\n' + reqText + '```')
-//    }, function(err, response) {
-//      console.log(response);
-//    });
-
-
-//    sendgrid.send(email, function(err, json) {
-//        if (err) { return console.error(err); }
-//          console.log(json);
-//    });
+    HC.postMessage(params, function(data) {
+      console.log(params);
+    }); 
     res.end('thanks');
 });
 
